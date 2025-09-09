@@ -15,20 +15,18 @@ def OSP(x, per):
         if Sigmalst[j, j] > per * Sigmalst[j - 1, j - 1]:
             k = min(j - 1, len(Sigmalst))
             break
-    # 根据奇异值，找差别最大的k个奇异值
 
     # Orthogonal Subspace Projection
     X_mean = np.mean(X, axis=1)
-    # D:表示各个维度上的均值
 
-    # X_centered = X - np.tile(X_mean, (X.shape[0], 1))  # 对X进行中心化处理
+    # X_centered = X - np.tile(X_mean, (X.shape[0], 1))
     X_centered = X - X_mean[:, np.newaxis]
     # X_mean[:, np.newaxis]: D*1
     Cov = np.cov(X_centered.T, rowvar=False)
     eigenValue, eigenVector = np.linalg.eig(Cov)
 
     idx = np.argsort(eigenValue)[::-1]
-    V_selected = (eigenVector[:, idx[0:k]]).T  # 选择前k个特征向量作为主成分
+    V_selected = (eigenVector[:, idx[0:k]]).T
 
     Pbkg = V_selected.T @ np.linalg.pinv(
         V_selected @ V_selected.T) @ V_selected
@@ -47,5 +45,6 @@ def OSP(x, per):
     X_tar = ((X_projected_tar - row_min_tar[:, np.newaxis]) / (
             row_max_tar[:, np.newaxis] - row_min_tar[:, np.newaxis] + 0.00001))
     x_tar = np.reshape(X_tar, (D, H, W))
+
 
     return x_bkg, x_tar
