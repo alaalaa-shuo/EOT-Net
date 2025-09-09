@@ -1,5 +1,5 @@
 #  An Endmember-Oriented Transformer Network for Bundle-Based Hyperspectral Unmixing
-**Demo code for "[An Endmember-Oriented Transformer Network for 
+**Code for "[An Endmember-Oriented Transformer Network for 
 Bundle-Based Hyperspectral Unmixing, TGRS, 2025](https://ieeexplore.ieee.org/abstract/document/10843765)"**
 
 
@@ -26,3 +26,4 @@ tribution heterogeneity of the endmembers, ultimately producing the abundance re
   keywords={Feature extraction;Transformers;Hyperspectral imaging;Attention mechanisms;Estimation;Classification algorithms;Generators;Data mining;Change detection algorithms;Accuracy;Autoencoder (AE) network;endmember bundle;hyperspectral unmixing (HU);spectral variability (SV);Transformer},
   doi={10.1109/TGRS.2025.3530642}}
 ```
+
