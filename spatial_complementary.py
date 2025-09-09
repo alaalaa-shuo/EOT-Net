@@ -12,7 +12,7 @@ class SCM(nn.Module):
 
         self.num_levels = num_levels
         self.in_channels = in_channels
-        self.level = level  # level为当前特征层
+        self.level = level
 
         self.sc_convs = nn.ModuleList()
         for i in range(num_levels):
@@ -44,4 +44,5 @@ class SCM(nn.Module):
         enhanced_feature = features[self.level] + selective_feature + (1-spatial_selective_map) * complementary_feature
 
         return enhanced_feature
+
 
