@@ -198,10 +198,10 @@ class OrientedTrans(nn.Module):
         # 1*1*D
         cls_tokens = repeat(cls_token, '() n d -> b n d', b=b)  # batch_size个cls_tokens
 
-        x = torch.cat((cls_tokens, x), dim=1)                   # 按照第一个维度(列)拼接
+        x = torch.cat((cls_tokens, x), dim=1)
         x = OSP(x, cls_token.squeeze(0))
 
-        x += self.pos_embedding[:, :(n + 1)]                         # 每个元素加上pos-position embedding
+        x += self.pos_embedding[:, :(n + 1)]
         x = self.dropout(x)
         
         x, attn_weight = self.transformer(x)
@@ -215,3 +215,4 @@ class OrientedTrans(nn.Module):
         x = self.to_latent(x)
         # B*D*H*W
         return x, attn_weight
+
